@@ -1,0 +1,146 @@
+/* sirst 4 cards */
+.row .box {
+    min-height: 100%;
+}
+
+.row .box .line {
+    width: 5px;
+    min-height: 60px;
+    border-radius: 5px;
+    margin-left: 3px;
+    background-color: var(--main-color);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.row .box h4 {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.row .box h4::after {
+    content: attr(data-number);
+    unicode-bidi: plaintext;
+}
+
+.row .box p {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+}
+
+/* circle chart */
+#viewChart{
+    min-width: 200px !important;
+    min-height: 200px !important;
+}
+.centerP {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 1.9rem;
+    font-weight: bold;
+}
+
+.color-hint .circle-hint {
+    width: 15px;
+    height: 15px;
+    margin-inline-end: 3px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+/* start table */
+/* main table global style */
+table tr td {
+    padding: 7px 0;
+    vertical-align: middle;
+}
+
+table thead tr td {
+    color: var(--main-color);
+    font-size: 0.9rem !important;
+    font-weight: bold;
+}
+
+table tbody tr td {
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+table{
+    border-collapse: separate;
+    border-spacing: 0 10px; 
+}
+table tbody tr {
+    margin-bottom: 10px !important;
+}
+/* custom search table style */
+table.search tbody tr:nth-child(odd) {
+    background-color: var(--main-gray);
+}
+
+table.search tbody tr:nth-child(even) {
+    background-color: #e3e3e3cc;
+}
+
+table.search tbody tr td:first-child {
+    background-color: white !important;
+    padding-left: 4px;
+}
+
+table.search tbody tr td:nth-child(2) {
+    border-radius: 0 7px 7px 0;
+    -webkit-border-radius: 0 7px 7px 0;
+    -moz-border-radius: 0 7px 7px 0;
+    -ms-border-radius: 0 7px 7px 0;
+    -o-border-radius: 0 7px 7px 0;
+}
+
+table tbody tr td:last-child {
+    border-radius: 7px 0 0 7px;
+    -webkit-border-radius: 7px 0 0 7px;
+    -moz-border-radius: 7px 0 0 7px;
+    -ms-border-radius: 7px 0 0 7px;
+    -o-border-radius: 7px 0 0 7px;
+}
+
+
+/* custom edit table style */
+.edit .one span{
+    padding: 3px 10px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    font-size: 0.9rem !important;
+    font-weight: 400;
+    margin-bottom: 10px; 
+}
+.edit .one span:nth-child(2) p{
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: calc(100% - 15px);
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+.edit .one:nth-child(odd) span:nth-child(2){
+    background-color: var(--main-gray);
+}
+.edit .one:nth-child(even) span:nth-child(2){
+    background-color: #e3e3e3cc;
+}

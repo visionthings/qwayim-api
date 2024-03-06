@@ -1,0 +1,6 @@
+table tr td{
+    font-size: 0.9rem !important;
+}
+table thead tr td{
+    color: var(--dark-gray);
+}

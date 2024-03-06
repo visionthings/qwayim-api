@@ -1,0 +1,345 @@
+/* circle chart */
+#subscribeChart{
+    min-width: 200px !important;
+    min-height: 200px !important;
+}
+.centerP {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 1.9rem;
+    font-weight: bold;
+}
+
+.color-hint .circle-hint {
+    width: 15px;
+    height: 15px;
+    margin-inline-end: 3px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+/* start progress */
+.prog-table tr td{
+    vertical-align: middle;
+}
+.prog-table tr td:last-child{
+    text-align: center;
+}
+.prog-table tr td:first-child{
+    padding-left: 5px;
+}
+.prog-table h6{
+    color: var(--dark-gray) !important;
+    text-align: start;
+}
+.progress{
+    height: 10px;
+    width: 95%;
+    background-color: #B0E4DD;
+}
+.progress .progress-bar{
+    background-color: var(--main-color);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+
+/* table top sup */
+div.top-box{
+    overflow-y: auto;
+}
+table.top-sup tr td {
+    padding: 7px 0;
+    vertical-align: middle;
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+table.top-sup{
+    border-collapse: separate;
+    border-spacing: 0 10px; 
+}
+table.top-sup tbody tr {
+    margin-bottom: 10px !important;
+}
+table.top-sup tbody tr:nth-child(odd) {
+    background-color: var(--main-gray);
+}
+
+table.top-sup tbody tr:nth-child(even) {
+    background-color: #e3e3e3cc;
+}
+table.top-sup tbody tr td:first-child{
+    border-radius: 0 10px 10px 0;
+    -webkit-border-radius: 0 10px 10px 0;
+    -moz-border-radius: 0 10px 10px 0;
+    -ms-border-radius: 0 10px 10px 0;
+    -o-border-radius: 0 10px 10px 0;
+    font-weight: bold;
+    padding-right: 0.3rem;
+}
+table.top-sup tbody tr td:last-child{
+    border-radius: 10px 0 0 10px;
+    -webkit-border-radius: 10px 0 0 10px;
+    -moz-border-radius: 10px 0 0 10px;
+    -ms-border-radius: 10px 0 0 10px;
+    -o-border-radius: 10px 0 0 10px;
+    font-size: 0.7rem;
+}
+table.top-sup tbody tr td:nth-child(4),table.top-sup tbody tr td:nth-child(5){
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+}
+/* user index table */
+div.users{
+    overflow-y: auto;
+}
+.users-index .btn{
+    cursor: pointer;
+}
+.users-index .btn:focus{
+    border: none !important;
+    color: darkgreen;
+}
+.users-index .dropdown-toggle::after{
+    display: none;
+}
+.users-index .dropdown-menu li a:focus{
+    background-color: transparent;
+    color: var(--main-black);
+}
+table.users-index{
+    border-collapse: separate;
+    border-spacing: 0 10px; 
+}
+
+table.users-index tr td{
+    vertical-align: middle;
+}
+table.users-index tr td:nth-child(6),table.users-index tr td:nth-child(7){
+    text-align: center;
+}
+table.users-index thead tr td{
+    font-weight: bold;
+    color: var(--dark-gray);
+}
+table.users-index tbody tr td{
+    font-size: 0.9rem;
+    padding: 0.9rem 0.2rem;
+}
+table.users-index tbody tr td:first-child,table.users-index tbody tr td:nth-child(2){
+    font-weight: bold;
+}
+table.users-index tbody tr:nth-child(odd){
+    background-color: var(--main-gray);
+}
+table.users-index tbody tr:nth-child(even){
+    background-color: #e3e3e3cc;
+}
+table.users-index tbody tr td:first-child{
+    border-radius: 0 10px 10px 0;
+    -webkit-border-radius: 0 10px 10px 0;
+    -moz-border-radius: 0 10px 10px 0;
+    -ms-border-radius: 0 10px 10px 0;
+    -o-border-radius: 0 10px 10px 0;
+}
+table.users-index tbody tr td:last-child{
+    border-radius: 10px 0 0 10px;
+    -webkit-border-radius: 10px 0 0 10px;
+    -moz-border-radius: 10px 0 0 10px;
+    -ms-border-radius: 10px 0 0 10px;
+    -o-border-radius: 10px 0 0 10px;
+}
+
+@media (max-width:767px) {
+    table.users-index{
+        width: 100% !important;
+    }
+    table.users-index thead tr td{
+        font-size: 14px;
+        font-weight: 600;
+    }
+    table.users-index tbody tr td{
+        font-weight: 400 !important;
+        font-size: 13px !important;
+        padding: 0.3rem 0.3rem;
+    }
+    .details{
+        overflow-y: auto;
+    }
+}
+
+/* user profile */
+.user-profile .person-img{
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25) !important;
+}
+.labelhead{
+    color: var(--dark-gray);
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+.userinfo{
+    padding: 0.3rem;
+    border: 1px solid var(--main-black);
+    display: block;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    font-size: 0.8rem;
+}
+.cir{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.cir-active{
+    background-color: var(--main-color);
+}
+.cir-notactive{
+    background-color: var(--main-red);
+}
+
+
+div.btns #sendMessage,div.btns #blockUser,div.btns #deleteUser{
+    border: none;
+    font-size: 0.8rem !important;
+    display: flex;
+    align-items: center;
+}
+div.btns label{
+    padding: 0.6rem 1.2rem;
+    text-align: center;
+    color: var(--main-color);
+    background-color: #F0F0F0;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    cursor: pointer !important;
+    font-size: 0.8rem !important;
+    display: flex;
+    align-items: center;
+}
+div.btns label:hover,label.checked{
+    background-color: var(--main-color) !important;
+    color: white !important;
+}
+div.btns button svg,div.btns label svg{
+    margin-left: 5px;
+}
+div.btns button,div.btn label{
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+@media (max-width:767px) {
+    div.btns button:not(:last-child),div.btns label{
+        margin-bottom: 15px;
+    }
+    
+}
+
+
+
+table.comm thead tr td{
+    font-weight: bold;
+    color: var(--dark-gray);
+}
+
+table.comm,table.proposal{
+    border-collapse: separate;
+    border-spacing: 0 10px; 
+    font-size: 0.85rem !important;
+}
+table.comm a,table.proposal a{
+    padding: 0.5rem;
+    font-weight: 400 !important;
+    text-wrap: nowrap;
+}
+table.comm tr td{
+    vertical-align: middle;
+    padding: 7px 0.3rem;
+}
+table.comm tbody tr:nth-child(odd),table.proposal tbody tr:nth-child(odd) {
+    background-color: var(--main-gray);
+}
+
+table.comm tbody tr:nth-child(even),table.proposal tbody tr:nth-child(even) {
+    background-color: #e3e3e3cc;
+}
+table.comm tbody tr td:first-of-type,table.comm tbody tr td:last-of-type{
+    background-color: white;
+}
+table.comm tbody tr td:nth-child(2),table.proposal tr td:nth-child(2){
+    border-radius: 0 10px 10px 0;
+    -webkit-border-radius: 0 10px 10px 0;
+    -moz-border-radius: 0 10px 10px 0;
+    -ms-border-radius: 0 10px 10px 0;
+    -o-border-radius: 0 10px 10px 0;
+}
+table.comm tbody tr td:nth-child(4),table.proposal tr td:last-of-type{
+    border-radius: 10px 0 0 10px;
+    -webkit-border-radius: 10px 0 0 10px;
+    -moz-border-radius: 10px 0 0 10px;
+    -ms-border-radius: 10px 0 0 10px;
+    -o-border-radius: 10px 0 0 10px;
+}
+table.comm tbody tr td:first-of-type{
+    font-weight: bold;
+}
+table.comm tbody tr td:nth-child(4){
+    text-wrap: nowrap;
+}
+table.proposal tr td{
+    vertical-align: middle;
+    padding: 9px 0.3rem;   
+}
+table.proposal tr td:first-of-type{
+    font-weight: bold;
+    background-color: white;
+}
+table.proposal p{
+    padding: 0.2rem;
+    background-color: white;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    margin: 0;
+}
+
+@media (max-width:767px) {
+    div.card:not(:first-of-type){
+        overflow-y: auto;
+    }    
+}

@@ -1,0 +1,924 @@
+{
+	"info": {
+		"_postman_id": "12bd1af3-2eba-4192-bc83-882a3e786fb0",
+		"name": "Qawaem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31105900",
+		"_collection_link": "https://universal-robot-671604.postman.co/workspace/Amazing-Team~c95e3c3e-be59-4f8b-94a6-f02fb01dec19/collection/31105900-12bd1af3-2eba-4192-bc83-882a3e786fb0?action=share&source=collection_link&creator=31105900"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "eng-hatan@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123123123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/login",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/elkho/OneDrive/سطح المكتب/415827234_654003256946195_5664587147952043920_n.jpg"
+								},
+								{
+									"key": "name",
+									"value": "Eng-hatan",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "eng-hatan@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123123123",
+									"type": "text"
+								},
+								{
+									"key": "country_code",
+									"value": "EG",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "جدة",
+									"type": "text"
+								},
+								{
+									"key": "date_of_birth",
+									"value": "29-6-1998",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/register",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Update Info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "5|nXHYSbyDvvzvoJzxefetEF8i3vsGdObOQoVd9u3p48a62dfc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Mr-Hatan",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "mr-hatan@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "country_code",
+									"value": "EG",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "القاهرة",
+									"type": "text"
+								},
+								{
+									"key": "date_of_birth",
+									"value": "29-6-1998",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "female",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/users/2",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|jGxWx55FH17NqmLU82m2lFsnHmbkAg6VmnUQyNKYd75b50c5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/users",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Auth User Favorites",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|jGxWx55FH17NqmLU82m2lFsnHmbkAg6VmnUQyNKYd75b50c5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/favorites",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"favorites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Avatar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|E8xmLic3MPJYZeHRVCTw0c2ZbelEoSyoE1gtSVNC311c8da1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/musta_n21g3f6/Downloads/Rectangle.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/users/update/avatar",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"users",
+								"update",
+								"avatar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "6|04QwJoXEvb4REK190JncZyio8KyUYP7Ws0sC2Lst775e5a2c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "old_password",
+									"value": "123123123",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "1231231234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/users/change/password",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"users",
+								"change",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "5|nXHYSbyDvvzvoJzxefetEF8i3vsGdObOQoVd9u3p48a62dfc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/users/3",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"users",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "City",
+			"item": [
+				{
+					"name": "Get All Cities",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|jGxWx55FH17NqmLU82m2lFsnHmbkAg6VmnUQyNKYd75b50c5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/cities",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"cities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cities Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/cities/search?keyword=القاهرة",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"cities",
+								"search"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "القاهرة"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show City",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/cities/1",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"cities",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Get All Categories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|jGxWx55FH17NqmLU82m2lFsnHmbkAg6VmnUQyNKYd75b50c5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/categories",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Category Places",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|jGxWx55FH17NqmLU82m2lFsnHmbkAg6VmnUQyNKYd75b50c5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/categories/1/1",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"categories",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Place",
+			"item": [
+				{
+					"name": "Show Place",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/places/2",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"places",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Places Search",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/places/search?keyword=مطعم",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"places",
+								"search"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "مطعم"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Top Places",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}api/top/places",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"top",
+								"places"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vist",
+			"item": [
+				{
+					"name": "Store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "vist_id",
+									"value": "471a4f00-2544-4ff4-b408-0c305f581c40",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/vists",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"vists"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Favorite",
+			"item": [
+				{
+					"name": "Add To Favorites",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|jGxWx55FH17NqmLU82m2lFsnHmbkAg6VmnUQyNKYd75b50c5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "place_id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/favorites",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"favorites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|jGxWx55FH17NqmLU82m2lFsnHmbkAg6VmnUQyNKYd75b50c5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/favorites/2",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"favorites",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "6|04QwJoXEvb4REK190JncZyio8KyUYP7Ws0sC2Lst775e5a2c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "place_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "rate",
+									"value": "2",
+									"description": "0 / 1 / 2 / 3 / 4 / 5",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/comments",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"comments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Question",
+			"item": [
+				{
+					"name": "Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "5|nXHYSbyDvvzvoJzxefetEF8i3vsGdObOQoVd9u3p48a62dfc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "place_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "question",
+									"value": "test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/questions",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"questions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Answer",
+			"item": [
+				{
+					"name": "Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "5|nXHYSbyDvvzvoJzxefetEF8i3vsGdObOQoVd9u3p48a62dfc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "question_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "answer",
+									"value": "test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/answers",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"answers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
