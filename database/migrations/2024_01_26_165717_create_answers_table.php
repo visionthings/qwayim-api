@@ -21,7 +21,8 @@ return new class extends Migration
             $table->foreignId('question_id')
                    ->constrained('questions')
                    ->cascadeOnDelete();
-                                   
+            $table->string('profile_pic');
+            $table->string('username');
             $table->text('answer');
             $table->timestamps();
         });

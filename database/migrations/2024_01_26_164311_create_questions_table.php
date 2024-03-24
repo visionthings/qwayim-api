@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            
+
             $table->foreignId('user_id')
                    ->constrained('users')
                    ->cascadeOnDelete();
@@ -21,7 +21,9 @@ return new class extends Migration
             $table->foreignId('place_id')
                    ->constrained('places')
                    ->cascadeOnDelete();
-                                          
+
+            $table->string('profile_pic');
+            $table->string('username');
             $table->text('question');
 
             $table->timestamps();

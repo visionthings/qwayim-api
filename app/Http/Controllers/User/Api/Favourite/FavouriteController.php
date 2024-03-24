@@ -37,7 +37,7 @@ class FavouriteController extends Controller
                                        ->first();
         if($checkIFPlaceExist){
             return response()->json([
-                'data'=>['message'=>'المكان موجود سابقا'],
+                'data'=>['message'=>'هذه الوجهة مضافة بالفعل إلى قائمة المفضلة الخاصة بك.'],
                 'statusCode'=>422,
             ]);
         }
@@ -45,7 +45,7 @@ class FavouriteController extends Controller
             'user_id'=>Auth::guard('sanctum')->user()->id,
             'place_id'=>$request->place_id,
             'status'=>'user',
-        ]);  
+        ]);
         return response()->json([
             'data'=>['message'=>'تم إضافة المكان الي المفضلات بنجاح'],
             'statusCode'=>200,

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\Api\Category;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Place;
+use http\Env\Response;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -16,8 +17,8 @@ class CategoryController extends Controller
     {
         $categories = Category::with('catfilters')->withCount('places')->latest()->get();
         return response()->json([
-            'data'=>$categories,
-            'statusCode'=>200,
+            'data' => $categories,
+            'statusCode' => 200,
         ]);
     }
 
@@ -32,21 +33,47 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $city_id,$cat_id)
+    public function show(string $city_id, $cat_id)
     {
-        $categoryPlaces = Place::with('city','media','feature','category')->where('city_id',$city_id)->where('category_id',$cat_id)->latest()->get();
-        if(!$categoryPlaces->count()){
+        $categoryPlaces = Place::with('city', 'media', 'feature', 'category', 'comments')->where('city_id', $city_id)->where('category_id', $cat_id)->latest()->paginate(10);
+        if (!$categoryPlaces->count()) {
             return response()->json([
-                'data'=>[
-                    'message'=>'عفوا البيانات غير موجودة'
-                ],
-                'statusCode'=>422,
+                'message' => 'عفوا البيانات غير موجودة',
+                'statusCode' => 422,
             ]);
         }
         return response()->json([
-            'data'=>$categoryPlaces,
-            'statusCode'=>200,
+            'data' => $categoryPlaces,
+            'statusCode' => 200,
         ]);
+    }
+
+    //    Get filtered resutls
+    public function filter(Request $request, string $city_id, $cat_id)
+    {
+        if (empty($request->filters)) {
+            $categoryPlaces = Place::with('city', 'media', 'feature', 'category')->where('city_id', $city_id)->where('category_id', $cat_id)->latest()->paginate(10);
+            if (!$categoryPlaces->count()) {
+                return response()->json([
+                    'message' => 'عفوا البيانات غير موجودة',
+                    'statusCode' => 422,
+                ]);
+            }
+            return response()->json([
+                'data' => $categoryPlaces,
+                'statusCode' => 200,
+            ]);
+        } else {
+            $filters = $request->filters;
+            $categoryPlaces = Place::with('city', 'media', 'feature', 'category')->where('city_id', $city_id)->where('category_id', $cat_id)->whereHas('feature', function ($query) use ($filters) {
+                foreach ($filters as $filter) {
+                    $query->WhereJsonContains('features', $filter);
+                }
+            })->latest()->paginate(10);
+
+
+        }
+        return response(['data' => $categoryPlaces, 'f' => $filters, 'status' => 200]);
     }
 
     /**

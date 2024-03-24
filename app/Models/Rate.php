@@ -11,6 +11,8 @@ class Rate extends Model
     protected $fillable = [
         'place_id',
         'user_id',
+        'profile_pic',
+        'username',
         'rate',
     ];
 
@@ -23,5 +25,5 @@ class Rate extends Model
             return $this->belongsTo(User::class,'user_id','id');
         }
     // end relationship
-    
+
 }

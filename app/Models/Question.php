@@ -10,6 +10,8 @@ class Question extends Model
     use HasFactory;
     protected $fillable = [
         'user_id',
+        'profile_pic',
+        'username',
         'place_id',
         'question',
     ];
@@ -27,5 +29,5 @@ class Question extends Model
             return $this->hasMany(Answer::class,'question_id','id');
         }
     // end relationship
-    
+
 }

@@ -17,25 +17,27 @@ class CommentController extends Controller
      */
     public function index()
     {
-        return DB::table('comments')->paginate(4);
     }
     /**
      * Store a newly created resource in storage.
      */
     public function store(CommentRequest $request)
     {
-        $request->merge(['user_id'=>Auth::guard('sanctum')->user()->id]);
-        $store = Comment::create($request->all());
+        $user = Auth::guard('sanctum')->user();
+        $request->merge(
+            [
+                'user_id'=>$user->id,
+                'profile_pic'=>$user->media[0]->original_url,
+                'username'=>$user->name,
+            ]
+        );
+        $comment = Comment::create($request->all());
 
-        $storeRate =  Rate::create([
-            'user_id'=>Auth::guard('sanctum')->user()->id,
-            'place_id'=>$request->place_id,
-            'rate'=>$request->rate,
-        ]);
         return response()->json([
             'data'=>[
                 'message'=>'تم إضافة التعليق بنجاح',
-            ],
+                'comment'=>$comment,
+             ],
             'statusCode'=>200,
         ]);
     }

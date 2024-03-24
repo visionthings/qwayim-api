@@ -23,10 +23,14 @@ class QuestionController extends Controller
      */
     public function store(QuestionRequest $request)
     {
-        $request->merge(['user_id'=>Auth::guard('sanctum')->user()->id]);
+        $user = Auth::guard('sanctum')->user();
+        $request->merge([
+            'user_id'=>$user->id,
+            'profile_pic'=>$user->media[0]->original_url,
+            'username'=>$user->name, ]);
         $question = Question::create($request->all());
         return response()->json([
-            'data'=>['message'=>'تم إضافة سوالك بنجاح'],
+            'data'=>['message'=>'تم إضافة سوالك بنجاح', 'question'=>$question],
             'statusCode'=>200,
         ]);
     }

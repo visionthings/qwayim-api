@@ -16,12 +16,14 @@ return new class extends Migration
             $table->foreignId('place_id')
                     ->constrained('places')
                     ->cascadeOnDelete();
-                    
+
             $table->foreignId('user_id')
                     ->constrained('users')
                     ->cascadeOnDelete();
             $table->text('content');
-
+            $table->string('profile_pic');
+            $table->string('username');
+            $table->enum('rate',[0,1,2,3,4,5])->default(0);
             $table->timestamps();
         });
     }

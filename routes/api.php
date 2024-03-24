@@ -33,55 +33,54 @@ use Illuminate\Support\Facades\Route;
 //************************************************************************************** */
 // Guest Route
 // Auth
-Route::post('login',[AuthController::class,'login']);
-Route::post('register',[AuthController::class,'store']);
-Route::post('logout',[AuthController::class,'logout']);
+Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'store']);
+Route::post('logout', [AuthController::class, 'logout']);
 
 //************************************************************************************** */
 // Auth Route
 // user
-Route::group(['middleware'=>'auth:sanctum'],function(){
+Route::group(['middleware' => 'auth:sanctum'], function () {
 
     //user
-    Route::post('/users/update/avatar',[UserController::class,'updateAvatar']);
-    Route::post('/users/change/password',[UserController::class,'changePassword']);
-    Route::apiResource('users',UserController::class)->except('show');
-
-
-
-
+    Route::post('/users/update/avatar', [UserController::class, 'updateAvatar']);
+    Route::post('/users/change/password', [UserController::class, 'changePassword']);
+    Route::apiResource('users', UserController::class)->except('show');
+    Route::post('/notifications', [UserController::class, 'read_notification']);
+    Route::get('/notifications', [UserController::class, 'get_notifications']);
 
     //favorites
-    Route::apiResource('favorites',FavouriteController::class);
+    Route::apiResource('favorites', FavouriteController::class);
 
     //question
-    Route::apiResource('questions',QuestionController::class);
+    Route::apiResource('questions', QuestionController::class);
 
     //answer
-    Route::apiResource('answers',AnswerController::class);
+    Route::apiResource('answers', AnswerController::class);
 });
 
+// city
+Route::get('cities/search', [CityController::class, 'search']);
+Route::apiResource('cities', CityController::class);
 
+// category
+Route::get('categories/{city_id}/{cat_id}', [CategoryController::class, 'show']);
+Route::post('categories/{city_id}/{cat_id}', [CategoryController::class, 'filter']);
+Route::apiResource('categories', CategoryController::class)->except('show');
 
-    // city
-    Route::get('cities/search',[CityController::class,'search']);
-    Route::apiResource('cities',CityController::class);
+//comments
+Route::apiResource('comments', CommentController::class);
 
-    // category
-    Route::get('categories/{city_id}/{cat_id}',[CategoryController::class,'show']);
-    Route::apiResource('categories',CategoryController::class)->except('show');
+//place
+Route::get('places/search', [PlaceController::class, 'search']);
+Route::get('top/places', [PlaceController::class, 'topPlaces']);
+Route::apiResource('places', PlaceController::class);
+Route::get('place-comments/{id}', [PlaceController::class, 'get_place_comments']);
+Route::get('place-questions/{id}', [PlaceController::class, 'get_place_questions']);
 
-    //comments
-    Route::apiResource('comments',CommentController::class);
-
-    //place
-    Route::get('places/search',[PlaceController::class,'search']);
-    Route::get('top/places',[PlaceController::class,'topPlaces']);
-    Route::apiResource('places',PlaceController::class);
-
-    //Vist
-    Route::apiResource('vists',VistController::class);
-    Route::get('users/{id}',[UserController::class, 'show']);
+//Vist
+Route::apiResource('vists', VistController::class);
+Route::get('users/{id}', [UserController::class, 'show']);
 
 
 //************************************************************************************** */

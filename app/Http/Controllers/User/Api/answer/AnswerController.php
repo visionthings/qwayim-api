@@ -5,8 +5,11 @@ namespace App\Http\Controllers\User\Api\answer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\Api\Answer\AnswerRequest;
 use App\Models\Answer;
+use App\Models\Question;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class AnswerController extends Controller
 {
@@ -23,11 +26,23 @@ class AnswerController extends Controller
      */
     public function store(AnswerRequest $request)
     {
-        $request->merge(['user_id'=>Auth::guard('sanctum')->user()->id]);
+        $user = Auth::guard('sanctum')->user();
+        $request->merge(['user_id' => $user->id,
+            'profile_pic' => $user->media[0]->original_url,
+            'username' => $user->name,]);
         $answer = Answer::create($request->all());
+
+//        Send notification
+        $question = Question::where('id', $request->question_id)->first();
+        $receiver_user = User::where('id', $question->user_id)->first();
+        $message = 'قام ' . $receiver_user->name . ' بالإجابة على سؤالك: ' . $question->question;
+        $user_id = $receiver_user->id;
+        $destination_id = $question->place_id;
+
+        Notification::sendNow($receiver_user, new \App\Notifications\user($message, $user_id, $destination_id));
         return response()->json([
-            'data'=>['message'=>'تم إضافة جوابك بنجاح'],
-            'statusCode'=>200,
+            'data' => ['message' => 'تم إضافة جوابك بنجاح', 'answer' => $answer],
+            'statusCode' => 200,
         ]);
     }
 

@@ -10,6 +10,8 @@ class Answer extends Model
     use HasFactory;
     protected $fillable = [
         'user_id',
+        'profile_pic',
+        'username',
         'question_id',
         'answer',
     ];

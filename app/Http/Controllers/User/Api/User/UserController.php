@@ -18,17 +18,17 @@ class UserController extends Controller
     public function index()
     {
         $authData = User::with('media')->find(Auth::guard('sanctum')->user()->id);
-        if(!$authData){
+        if (!$authData) {
             return response()->json([
-                'data'=>[
-                    'message'=>'عفوا يجب عليك تسجيل الدخول اولا',
+                'data' => [
+                    'message' => 'عفوا يجب عليك تسجيل الدخول اولا',
                 ],
-                'statusCode'=>422,
+                'statusCode' => 422,
             ]);
         }
         return response()->json([
-            'data'=>$authData,
-            'statusCode'=>200,
+            'data' => $authData,
+            'statusCode' => 200,
         ]);
     }
 
@@ -45,7 +45,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-         return User::with('media')->find($id);
+        return User::with('media', 'notifications')->find($id);
     }
 
     /**
@@ -57,10 +57,10 @@ class UserController extends Controller
         $update->update($request->all());
 
         return response()->json([
-            'data'=>[
-                'message'=>'تم تعديل بيانات الحساب بنجاح',
+            'data' => [
+                'message' => 'تم تعديل بيانات الحساب بنجاح',
             ],
-            'statusCode'=>200,
+            'statusCode' => 200,
         ]);
     }
 
@@ -70,70 +70,94 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         $delete = User::find($id);
-        if(!$delete){
+        if (!$delete) {
             return response()->json([
-                'data'=>[
-                    'message'=>'عفوا الحساب غير موجود',
+                'data' => [
+                    'message' => 'عفوا الحساب غير موجود',
                 ],
-                'statusCode'=>200,
+                'statusCode' => 200,
             ]);
         }
         $delete->delete();
         return response()->json([
-            'data'=>[
-                'message'=>'تم حذف الحساب بنجاح',
+            'data' => [
+                'message' => 'تم حذف الحساب بنجاح',
             ],
-            'statusCode'=>200,
+            'statusCode' => 200,
         ]);
     }
 
 
-    public function updateAvatar(Request $request){
+    public function updateAvatar(Request $request)
+    {
         $request->validate([
-            'avatar'=>['required','mimes:png,jpg'],
+            'avatar' => ['required', 'mimes:png,jpg'],
         ]);
 
         $update = User::find(Auth::guard('sanctum')->user()->id);
 
-        if($request->hasFile('avatar')){
+        if ($request->hasFile('avatar')) {
             $update->clearMediaCollection('user');
             $update->addMedia($request->file('avatar'))
-                  ->usingName($update->name)
-                  ->toMediaCollection('user');
+                ->usingName($update->name)
+                ->toMediaCollection('user');
         }
         return response()->json([
-            'data'=>[
-                'message'=>'تم تعديل الصور بنجاح',
+            'data' => [
+                'message' => 'تم تعديل الصور بنجاح',
             ],
-            'statusCode'=>200,
+            'statusCode' => 200,
         ]);
     }
 
-    public function changePassword(Request $request){
+    public function changePassword(Request $request)
+    {
         $request->validate([
-            'old_password'=>['required'],
-            'new_password'=>['required','string'],
+            'old_password' => ['required'],
+            'new_password' => ['required', 'string'],
         ]);
 
         $updatePassword = User::find(Auth::guard('sanctum')->user()->id);
-        if(!Hash::check($request->old_password,$updatePassword->password)){
+        if (!Hash::check($request->old_password, $updatePassword->password)) {
             return response()->json([
-                'data'=>[
-                    'message'=>'عفوا كلمة السر القديمة غير صحيحة',
+                'data' => [
+                    'message' => 'عفوا كلمة السر القديمة غير صحيحة',
                 ],
-                'statusCode'=>422,
+                'statusCode' => 422,
             ]);
         }
         $updatePassword->update([
-            'password'=>Hash::make($request->new_password)
+            'password' => Hash::make($request->new_password)
         ]);
 
         return response()->json([
-            'data'=>[
-                'message'=>'تم تغير كلمة السر بنجاح',
+            'data' => [
+                'message' => 'تم تغير كلمة السر بنجاح',
             ],
-            'statusCode'=>200,
+            'statusCode' => 200,
         ]);
 
+    }
+
+//    User Notifications
+    public function get_notifications()
+    {
+        $user = auth()->user();
+        $notifications_with_profile_pic = [];
+        foreach ($user->notifications as $notification) {
+            $sender = User::where('id', $notification->data['user_id'])->first();
+            $sender_profile_pic = $sender->media[0]->original_url;
+            $data = ['notification' => $notification, 'profile_pic' => $sender_profile_pic];
+            array_push($notifications_with_profile_pic, $data);
+        }
+        return response(['data' => $notifications_with_profile_pic], 200);
+    }
+
+    public function read_notification(Request $request)
+    {
+        $user = auth()->user();
+        $notification = $user->notifications->where('id', $request->id)->first();
+        $notification->markAsRead();
+        return response(['message' => 'sucess'], 200);
     }
 }

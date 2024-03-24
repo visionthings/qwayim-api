@@ -12,7 +12,10 @@ class Comment extends Model
     protected $fillable = [
         'place_id',
         'user_id',
-        'content'
+        'profile_pic',
+        'username',
+        'content',
+        'rate'
     ];
 
     // start reltionship
