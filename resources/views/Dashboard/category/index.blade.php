@@ -2,13 +2,13 @@
     @push('style')
         <link rel="stylesheet" href="{{asset('assets/css/dashboard/category.css')}}" />
     @endpush
-    <a href="{{route('categories.create')}}">إضافة قسم جديد</a>
-    <table>
+    <a href="{{route('categories.create')}}" class="main-btn">إضافة قسم جديد</a>
+    <table class="w-100 category">
         <thead>
             <tr>
-                <th>الاسم</th>
-                <th>الحالة</th>
-                <th>حذف</th>
+                <th class="w-50">الاسم</th>
+                <th class="w-25">الحالة</th>
+                <th class="w-25">حذف</th>
             </tr>
         </thead>
         <tbody>
@@ -26,7 +26,7 @@
                     <form action="{{route('categories.destroy',$category->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">حذف</button>
+                        <button type="submit" class="red-btn small p-2"><i class="fa-solid fa-trash"></i> حذف</button>
                     </form>
                 </td>
             </tr>

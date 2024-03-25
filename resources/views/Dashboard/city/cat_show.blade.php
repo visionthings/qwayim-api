@@ -12,10 +12,10 @@
     <div class="container mt-3">
         <form action="{{URL::current()}}" method="GET" class="w-100">
             <div class="row w-100 align-items-center">
-                <div class="col-2 text-center">
+                <div class="col-sm-2 col-4 text-center mb-2">
                     <label for="city">المدينة</label>
                 </div>
-                <div class="col-2">
+                <div class="col-sm-3 col-8 mb-2">
                     <select name="city_id" id="city" class="form-control form-select">
                       @foreach ($cities as $city)
                         <option value="{{$city->id}}" @if(request('city_id') == $city->id)  selected @endif>{{$city->name}}</option>
@@ -23,18 +23,18 @@
                         
                     </select>
                 </div>
-                <div class="col-2 text-center">
+                <div class="col-sm-2 col-4 text-center mb-2">
                     <label for="category">القسم</label>
                 </div>
-                <div class="col-2">
+                <div class="col-sm-3 col-8 mb-2">
                     <select name="category_id" id="category" class="form-control form-select">
                       @foreach ($categories as $category)
                         <option value="{{$category->id}}" @if(request('category_id') == $category->id)  selected @endif>{{$category->name}}</option>
                       @endforeach
                     </select>
                 </div>
-                <div class="col-2">
-                  <button type="submit">جلب البيانات</button>
+                <div class="col-sm-2 mb-2">
+                  <button type="submit" class="main-btn p-2 small d-block ms-auto">جلب البيانات</button>
                 </div>  
             </div>
         </form>

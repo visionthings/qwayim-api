@@ -136,7 +136,8 @@
                                 
                             @empty
                                 <tr>
-                                    <td colspan="9"></td>
+                                    <td></td>
+                                    <td colspan="8" class="text-center bold">لا يوجد تعليقات لعرضها</td>
                                 </tr> 
                             @endforelse
                             {{-- @empty

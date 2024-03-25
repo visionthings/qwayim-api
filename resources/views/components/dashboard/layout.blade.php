@@ -33,7 +33,7 @@
         <ul>
             <li class="{{ Request::is('dashboard') ? 'active' : '' }}"><a href="{{route('home') }}"><i class="fa-solid fa-house"></i>الرئيسية</a></li>
             <li class="{{ Route::is('cities*') ? 'active' : '' }}"><a href="{{ route('cities.index') }}"><i class="fa-regular fa-font-awesome"></i>المدن</a></li>
-            <li class="{{ Route::is('categories*') ? 'active' : '' }}"><a href="{{ route('categories.index') }}"><i class="fa-regular fa-font-awesome"></i>الاقسام</a></li>
+            <li class="{{ Route::is('categories*') ? 'active' : '' }}"><a href="{{ route('categories.index') }}"><i class="fa-solid fa-list"></i>الاقسام</a></li>
 
             <li class="{{ Route::is('comments*') ? 'active' : '' }}"><a href="{{ route('comments.index') }}"><i class="fa-regular fa-comment-dots"></i>التعليقات</a></li>
             <li class="{{ Route::is('subscriptions*') ? 'active' : '' }}"><a href="{{route('subscriptions.index')}}"><i class="fa-solid fa-users"></i>الاشتراكات</a></li>
