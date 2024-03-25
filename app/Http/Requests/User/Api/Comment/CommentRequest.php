@@ -22,8 +22,8 @@ class CommentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'content'=>['required','string'],
-            'rate'=>['required','in:0,1,2,3,4,5']
+            'content' => ['required', 'string'],
+            'rate' => ['required', 'in:0,1,2,3,4,5,6']
         ];
     }
 }
