@@ -52,7 +52,7 @@ class CategoryController extends Controller
     public function filter(Request $request, string $city_id, $cat_id)
     {
         if (empty($request->filters)) {
-            $categoryPlaces = Place::with('city', 'media', 'feature', 'category')->where('city_id', $city_id)->where('category_id', $cat_id)->latest()->paginate(10);
+            $categoryPlaces = Place::with('city', 'comments', 'media', 'feature', 'category')->where('city_id', $city_id)->where('category_id', $cat_id)->latest()->paginate(10);
             if (!$categoryPlaces->count()) {
                 return response()->json([
                     'message' => 'عفوا البيانات غير موجودة',
