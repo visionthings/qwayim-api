@@ -73,7 +73,7 @@ class CategoryController extends Controller
 
 
         }
-        return response(['data' => $categoryPlaces, 'f' => $filters, 'status' => 200]);
+        return response(['data' => $categoryPlaces, 'f' => $filters, 'statusCode' => 200]);
     }
 
     /**
