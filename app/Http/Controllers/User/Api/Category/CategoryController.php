@@ -65,10 +65,12 @@ class CategoryController extends Controller
             ]);
         } else {
             $filters = $request->filters;
-            $categoryPlaces = Place::with('city', 'media', 'feature', 'category')->where('city_id', $city_id)->where('category_id', $cat_id)->whereHas('feature', function ($query) use ($filters) {
-                foreach ($filters as $filter) {
-                    $query->WhereJsonContains('features', $filter);
-                }
+            $categoryPlaces = Place::with('city', 'comments', 'media', 'feature', 'category')->where('city_id', $city_id)->where('category_id', $cat_id)->whereHas('feature', function ($query) use ($filters) {
+                $query->where(function ($subQuery) use ($filters) {
+                    foreach ($filters as $filter) {
+                        $subQuery->orWhereJsonContains('features', $filter);
+                    }
+                });
             })->latest()->paginate(10);
 
 
